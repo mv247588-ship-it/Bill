@@ -46,6 +46,47 @@ npm run dev
 
 Acesse `http://localhost:3000`.
 
+## Quero testar agora (passo a passo)
+
+1. Validação rápida de ambiente:
+```bash
+node -v
+npm -v
+```
+
+2. Instalação e banco:
+```bash
+npm install
+cp .env.example .env
+npm run prisma:generate
+npm run prisma:migrate -- --name init
+npm run prisma:seed
+```
+
+3. Subir aplicação:
+```bash
+npm run dev
+```
+
+4. Teste funcional manual:
+- Abra `http://localhost:3000`
+- Clique em **Entrar / Criar conta**
+- Entre com o demo:
+  - `demo@manifestai.com`
+  - `12345678`
+- Valide navegação para pricing, onboarding e dashboard.
+
+5. Checks de qualidade:
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
+
+### Problemas comuns
+- `next: not found`: rode `npm install` antes dos checks.
+- Erro de banco/Prisma: confirme `DATABASE_URL` no `.env` e se o Postgres está ativo.
+
 ## Credenciais demo
 - Email: `demo@manifestai.com`
 - Senha: `12345678`
